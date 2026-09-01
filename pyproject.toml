@@ -9,6 +9,8 @@ description = "Fraud scoring service"
 requires-python = ">=3.12"
 dependencies = [
     "pydantic>=2",
+    "fastapi[standard]>=0.115",
+    "uvicorn>=0.30",
     "pandas",
     "scikit-learn",
     "joblib",
