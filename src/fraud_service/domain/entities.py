@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 """Domain entities: the vocabulary of the fraud problem.
 
 Rule for this file: imports from stdlib + pydantic ONLY. No pandas, no
@@ -42,11 +43,60 @@ class FeatureVector(BaseModel):
 
 
 class Decision(StrEnum):
+=======
+import math
+from dataclasses import dataclass
+from datetime import datetime
+from enum import Enum
+
+
+@dataclass(frozen=True)
+class FeatureVector:
+    amount_log: float
+    channel: str
+    mcc: str
+    hour_of_day: int
+    is_night: int
+
+
+@dataclass(frozen=True)
+class RawScore:
+    value: float
+
+
+class Decision(str, Enum):
+>>>>>>> personal/main
     ALLOW = "allow"
     REVIEW = "review"
     BLOCK = "block"
 
+<<<<<<< HEAD
 class FraudScore(BaseModel):
+=======
+
+@dataclass(frozen=True)
+class Transaction:
+    transaction_id: str
+    amount_sar: float
+    channel: str
+    merchant_category: str
+    timestamp: datetime
+
+    def to_features(self) -> FeatureVector:
+        hour_of_day = self.timestamp.hour
+
+        return FeatureVector(
+            amount_log=math.log1p(self.amount_sar),
+            channel=self.channel,
+            mcc=self.merchant_category.strip().upper().replace(" ", "_"),
+            hour_of_day=hour_of_day,
+            is_night=int(hour_of_day < 6),
+        )
+
+
+@dataclass(frozen=True)
+class FraudScore:
+>>>>>>> personal/main
     transaction_id: str
     probability: float
     decision: Decision
