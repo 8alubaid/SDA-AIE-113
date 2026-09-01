@@ -2,7 +2,12 @@ import time
 
 from fastapi import APIRouter, Depends, HTTPException, Request
 
-from fraud_service.api.schemas import HealthResponse, PredictRequest, PredictResponse, ReadyResponse
+from fraud_service.api.schemas import (
+    HealthResponse,
+    PredictRequest,
+    PredictResponse,
+    ReadyResponse,
+)
 from fraud_service.logging_setup import get_logger
 from fraud_service.service.scorer import FraudScorer
 

@@ -1,12 +1,13 @@
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
-import pytest 
+import pytest
 from fastapi.testclient import TestClient
 
 from fraud_service.api.app import create_app
-from fraud_service.api.routes import get_scorer 
-from fraud_service.domain.entities import FeatureVector, Transaction 
-from fraud_service.service.scorer import FraudScorer 
+from fraud_service.api.routes import get_scorer
+from fraud_service.domain.entities import FeatureVector, Transaction
+from fraud_service.service.scorer import FraudScorer
+
 
 class ConstantModel:
     def __init__(self, p: float, version: str ="test-1"):
@@ -21,7 +22,7 @@ def sample_txn() -> Transaction:
     return Transaction(
         transaction_id="TXN-TEST-0001", amount_sar=250.0, channel="ecom",
         merchant_category="electronics", customer_id="CUST-77",
-        timestamp=datetime(2026,7,5,3,30, tzinfo=timezone.utc)
+        timestamp=datetime(2026,7,5,3,30, tzinfo=UTC)
     )
 
 @pytest.fixture

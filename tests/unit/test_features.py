@@ -1,5 +1,6 @@
 import pytest
 
+
 @pytest.mark.unit
 def test_feature_names_are_stable(sample_txn):
     assert set(sample_txn.to_features().values) == {

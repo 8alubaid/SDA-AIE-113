@@ -3,6 +3,7 @@ import pytest
 from fraud_service.domain.entities import Decision
 from fraud_service.domain.policies import decide
 
+
 @pytest.mark.unit
 @pytest.mark.parametrize("p, expected", [
     (0.849999, Decision.REVIEW),
