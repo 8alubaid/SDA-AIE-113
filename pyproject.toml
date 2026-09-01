@@ -14,31 +14,30 @@ dependencies = [
     "pandas",
     "scikit-learn",
     "joblib",
-<<<<<<< HEAD
-    "pydantic>=2",
-    "fastapi[standard]",
-    "uvicorn",
     "pydantic-settings",
     "structlog",
 ]
 
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
-
-[tool.hatch.build.targets.wheel]
-packages = ["src/fraud_service"]
-
 [project.optional-dependencies]
-dev = ["httpx", "pytest", "pytest-cov", "ruff", "mypy", "import-linter"]
+dev = [
+    "httpx",
+    "pytest",
+    "pytest-cov",
+    "ruff",
+    "mypy",
+    "import-linter",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [tool.pytest.ini_options]
 addopts = "-q --strict-markers --cov=fraud_service --cov-branch --cov-report=term-missing"
 markers = [
-  "unit: fast, no I/O",
-  "integration: app-level via TestClient",
-  "behavioural: exercises the real model artefact",
-  "slow: excluded from the per-commit gate",
+    "unit: fast, no I/O",
+    "integration: app-level via TestClient",
+    "behavioural: exercises the real model artefact",
+    "slow: excluded from the per-commit gate",
 ]
 testpaths = ["tests"]
 
@@ -64,7 +63,6 @@ layers = [
     "fraud_service.service",
     "fraud_service.domain",
 ]
-# domain imports nothing above it; violations fail CI, not code review
 
 [tool.mypy]
 python_version = "3.12"
@@ -74,15 +72,3 @@ warn_unused_ignores = true
 
 [tool.ruff.lint.per-file-ignores]
 "src/fraud_service/api/routes.py" = ["B008"]
-=======
-]
-
-[project.optional-dependencies]
-dev = [
-    "ruff",
-]
-
-[tool.setuptools.packages.find]
-where = ["src"]
-
->>>>>>> personal/main
