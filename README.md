@@ -3,13 +3,12 @@
 [![CI](https://github.com/8alubaid/SDA-AIE-113/actions/workflows/ci.yml/badge.svg)](https://github.com/8alubaid/SDA-AIE-113/actions/workflows/ci.yml)
 [![Python](https://img.shields.io/badge/python-3.12%2B-blue)](https://www.python.org/)
 
-A production-grade REST service that scores card transactions for fraud risk and
-returns an **allow / review / block** decision.
+A production-grade REST service that decides if card transactions is a fraud risk and
+returns either **allow / review / block** decision.
 
-The project's real subject is the *journey*, not the model. It starts as a single
-exploratory Jupyter notebook (`notebook_v1.ipynb`) and is refactored, lab by lab,
-into a layered, tested, containerised, CI-gated service. The pre-trained model
-artefact never changes — so every improvement is an *engineering* improvement,
+It starts as a single exploratory Jupyter notebook (`notebook_v1.ipynb`) and is refactored 
+into a layered, tested, containerised service. The pre-trained model
+artefact never changes, so every improvement is an *engineering* improvement,
 and the gap between "it runs on my machine" and "it runs in production" is
 visible in isolation.
 
